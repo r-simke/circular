@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Topic:</b>
+  <%= @newsletter.topic %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @newsletter.content %>
+</p>
+
+<p>
+  <b>Author:</b>
+  <%= @newsletter.author_id %>
+</p>
+
+<p>
+  <b>Template:</b>
+  <%= @newsletter.template_id %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @newsletter.status_id %>
+</p>
+
+<p>
+  <b>Show outline:</b>
+  <%= @newsletter.show_outline %>
+</p>
+
+<p>
+  <b>Code:</b>
+  <%= @newsletter.code %>
+</p>
+
+<p>
+  <b>Show dividerline:</b>
+  <%= @newsletter.show_dividerline %>
+</p>
+
+
+<%= link_to 'Edit', edit_newsletter_path(@newsletter) %> |
+<%= link_to 'Back', newsletters_path %>
