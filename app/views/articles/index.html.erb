@@ -1,0 +1,31 @@
+<h1>Listing articles</h1>
+
+<table>
+  <tr>
+    <th>Topic</th>
+    <th>Content</th>
+    <th>Newsletter</th>
+    <th>Antecessor</th>
+    <th>Show dividerline</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @articles.each do |article| %>
+  <tr>
+    <td><%= article.topic %></td>
+    <td><%= article.content %></td>
+    <td><%= article.newsletter %></td>
+    <td><%= article.antecessor %></td>
+    <td><%= article.show_dividerline %></td>
+    <td><%= link_to 'Show', article %></td>
+    <td><%= link_to 'Edit', edit_article_path(article) %></td>
+    <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Article', new_article_path %>

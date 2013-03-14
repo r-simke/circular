@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Topic:</b>
+  <%= @article.topic %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @article.content %>
+</p>
+
+<p>
+  <b>Newsletter:</b>
+  <%= @article.newsletter %>
+</p>
+
+<p>
+  <b>Antecessor:</b>
+  <%= @article.antecessor %>
+</p>
+
+<p>
+  <b>Show dividerline:</b>
+  <%= @article.show_dividerline %>
+</p>
+
+
+<%= link_to 'Edit', edit_article_path(@article) %> |
+<%= link_to 'Back', articles_path %>

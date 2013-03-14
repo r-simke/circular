@@ -11,7 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130314094947) do
+ActiveRecord::Schema.define(:version => 20130314115909) do
+
+  create_table "articles", :force => true do |t|
+    t.string   "topic"
+    t.text     "content"
+    t.integer  "newsletter_id"
+    t.integer  "antecessor_id"
+    t.boolean  "show_dividerline"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.integer  "position"
+  end
+
+  add_index "articles", ["antecessor_id"], :name => "index_articles_on_antecessor_id"
+  add_index "articles", ["newsletter_id"], :name => "index_articles_on_newsletter_id"
 
   create_table "newsletters", :force => true do |t|
     t.string   "topic"

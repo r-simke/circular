@@ -43,6 +43,10 @@
     <%= f.label :show_dividerline %><br />
     <%= f.check_box :show_dividerline %>
   </div>
+  <div class="field">
+    <% @newsletter.articles.each do |article| %>
+    <%= article.topic %>
+    <% end %>
   <div class="actions">
     <%= f.submit %>
   </div>
