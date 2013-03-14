@@ -1,0 +1,22 @@
+= form_for @sidearticle do |f|
+  - if @sidearticle.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@sidearticle.errors.count, "error")} prohibited this sidearticle from being saved:"
+      %ul
+        - @sidearticle.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :topic
+    = f.text_field :topic
+  .field
+    = f.label :content
+    = f.text_area :content
+  .field
+    = f.label :newsletter
+    = f.text_field :newsletter
+  .field
+    = f.label :position
+    = f.number_field :position
+  .actions
+    = f.submit 'Save'

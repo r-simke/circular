@@ -1,0 +1,25 @@
+%h1 Listing sidearticles
+
+%table
+  %tr
+    %th Topic
+    %th Content
+    %th Newsletter
+    %th Position
+    %th
+    %th
+    %th
+
+  - @sidearticles.each do |sidearticle|
+    %tr
+      %td= sidearticle.topic
+      %td= sidearticle.content
+      %td= sidearticle.newsletter
+      %td= sidearticle.position
+      %td= link_to 'Show', sidearticle
+      %td= link_to 'Edit', edit_sidearticle_path(sidearticle)
+      %td= link_to 'Destroy', sidearticle, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Sidearticle', new_sidearticle_path

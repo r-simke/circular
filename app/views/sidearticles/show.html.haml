@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Topic:
+  = @sidearticle.topic
+%p
+  %b Content:
+  = @sidearticle.content
+%p
+  %b Newsletter:
+  = @sidearticle.newsletter
+%p
+  %b Position:
+  = @sidearticle.position
+
+= link_to 'Edit', edit_sidearticle_path(@sidearticle)
+\|
+= link_to 'Back', sidearticles_path
