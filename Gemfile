@@ -43,4 +43,4 @@ gem 'twitter-bootstrap-rails'
 
 gem 'acts_as_list'
 
-gem 'haml'
+gem 'haml-rails'
