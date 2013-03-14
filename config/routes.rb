@@ -1,4 +1,7 @@
 Circular::Application.routes.draw do
+  resources :templates
+
+
   resources :sidearticles
 
 
