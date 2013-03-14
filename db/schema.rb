@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130314115909) do
+ActiveRecord::Schema.define(:version => 20130314143659) do
 
   create_table "articles", :force => true do |t|
     t.string   "topic"
@@ -27,6 +27,16 @@ ActiveRecord::Schema.define(:version => 20130314115909) do
   add_index "articles", ["antecessor_id"], :name => "index_articles_on_antecessor_id"
   add_index "articles", ["newsletter_id"], :name => "index_articles_on_newsletter_id"
 
+  create_table "authors", :force => true do |t|
+    t.string   "name"
+    t.string   "title"
+    t.string   "phone"
+    t.string   "email"
+    t.string   "image_url"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "newsletters", :force => true do |t|
     t.string   "topic"
     t.text     "content"
@@ -39,5 +49,16 @@ ActiveRecord::Schema.define(:version => 20130314115909) do
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
   end
+
+  create_table "sidearticles", :force => true do |t|
+    t.string   "topic"
+    t.text     "content"
+    t.integer  "newsletter_id"
+    t.integer  "position"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "sidearticles", ["newsletter_id"], :name => "index_sidearticles_on_newsletter_id"
 
 end
