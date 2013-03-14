@@ -16,8 +16,7 @@
   <tr>
     <td><%= article.topic %></td>
     <td><%= article.content %></td>
-    <td><%= article.newsletter %></td>
-    <td><%= article.antecessor %></td>
+    <td><%= article.newsletter.topic %></td>
     <td><%= article.show_dividerline %></td>
     <td><%= link_to 'Show', article %></td>
     <td><%= link_to 'Edit', edit_article_path(article) %></td>
