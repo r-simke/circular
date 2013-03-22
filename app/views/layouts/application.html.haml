@@ -1,6 +1,7 @@
 !!!
 %html{:lang => "en"}
   %head
+    /<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,600' rel='stylesheet' type='text/css'>
     %meta{:charset => "utf-8"}/
     %meta{:content => "IE=Edge,chrome=1", "http-equiv" => "X-UA-Compatible"}/
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
@@ -37,7 +38,8 @@
           .container-fluid.nav-collapse
             %ul.nav
               %li= link_to "Newsletters", newsletters_path
-              %li= link_to "Articles", articles_path
+              %li= link_to "Authors", authors_path
+              %li= link_to "Templates", templates_path
           / /.nav-collapse
     .container-fluid
       .row-fluid
@@ -46,7 +48,7 @@
           = yield
       / /row
       %footer
-        %p &copy; Company 2012
+        %p &copy; Adyton Systems 2013
     / /container
     /
       Javascripts
