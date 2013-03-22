@@ -44,3 +44,7 @@ gem 'twitter-bootstrap-rails'
 gem 'acts_as_list'
 
 gem 'haml-rails'
+
+gem 'nested_form'
+
+gem 'tinymce-rails'

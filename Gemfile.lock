@@ -68,6 +68,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.21)
     multi_json (1.6.1)
+    nested_form (0.3.1)
     polyglot (0.3.3)
     rack (1.4.5)
     rack-cache (1.2)
@@ -110,6 +111,8 @@ GEM
       ref
     thor (0.17.0)
     tilt (1.3.5)
+    tinymce-rails (3.5.8.1)
+      railties (>= 3.1.1)
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
@@ -131,9 +134,11 @@ DEPENDENCIES
   haml-rails
   jquery-rails
   less-rails
+  nested_form
   rails (= 3.2.12)
   sass-rails (~> 3.2.3)
   sqlite3
   therubyracer
+  tinymce-rails
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)
