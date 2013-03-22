@@ -1,0 +1,29 @@
+<fieldset id="sidearticles">
+  <legend>Side Articles</legend>
+  <%= f.fields_for :sidearticles do |sidearticle_form| %>
+    <div class="well article">
+      <i class="icon-chevron-down toggle"></i>
+      <h5>
+        Article <%= sidearticle_form.object.id %>
+      </h5>
+      <div class="control-group">
+        <%= sidearticle_form.label :topic, "Headline" %>
+        <div class="controls">
+          <%= sidearticle_form.text_field :topic, class: "input-block-level sidearticle_headline" %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= sidearticle_form.label :content, "Text" %>
+        <div class="controls">
+          <%= sidearticle_form.text_area :content, class: "input-block-level sidearticle_text" %>
+        </div>
+      </div>
+      <div class="control-group">
+        <div class="controls">
+          <%= sidearticle_form.hidden_field :show_dividerline? %>
+          <%= sidearticle_form.button("Show Divider Line", {:class => sidearticle_form.object.show_dividerline ? 'btn active' : 'btn', :'data-toggle' => 'button', :type => 'button'}) %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</fieldset>
