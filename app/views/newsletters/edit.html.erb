@@ -1,6 +1,33 @@
-<h1>Editing newsletter</h1>
+<h3>Editing Newsletter <%= @newsletter.id %></h3>
 
-<%= render 'form' %>
 
-<%= link_to 'Show', @newsletter %> |
-<%= link_to 'Back', newsletters_path %>
+<div class="row-fluid">
+	<div class="span6 form">
+		<%= render 'form' %>
+	</div>
+
+
+	<div class="span6 newsletter">
+		<div class="preiframe">
+			<ul class="nav nav-tabs">
+				<li class="active" id="preview">
+					<a href="#">Preview</a>
+				</li>
+				<li id="code"><a href="#">Code</a></li>
+			</ul>
+
+			<iframe id ="iframe">
+			</iframe>
+			<div id="precontainer">
+				<a href="#" class="copy_button btn btn-small">Copy to Clipboard</a>
+				<pre id="pre" class="pre-scrollable"></pre>
+			</div>
+		</div>
+
+	</div><!--/span-->
+
+
+
+
+<!-- Preview/Code here -->
+

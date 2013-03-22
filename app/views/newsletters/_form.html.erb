@@ -1,53 +1,74 @@
-<%= form_for(@newsletter) do |f| %>
-  <% if @newsletter.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@newsletter.errors.count, "error") %> prohibited this newsletter from being saved:</h2>
+<%= form_for(@newsletter, :html => { :class => "form-horizontal"}) do |f| %>
+<% if @newsletter.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@newsletter.errors.count, "error") %> prohibited this newsletter from being saved:</h2>
 
-      <ul>
-      <% @newsletter.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :topic %><br />
-    <%= f.text_field :topic %>
-  </div>
-  <div class="field">
-    <%= f.label :content %><br />
-    <%= f.text_area :content %>
-  </div>
-  <div class="field">
-    <%= f.label :author_id %><br />
-    <%= f.number_field :author_id %>
-  </div>
-  <div class="field">
-    <%= f.label :template_id %><br />
-    <%= f.number_field :template_id %>
-  </div>
-  <div class="field">
-    <%= f.label :status_id %><br />
-    <%= f.number_field :status_id %>
-  </div>
-  <div class="field">
-    <%= f.label :show_outline %><br />
-    <%= f.check_box :show_outline %>
-  </div>
-  <div class="field">
-    <%= f.label :code %><br />
-    <%= f.text_area :code %>
-  </div>
-  <div class="field">
-    <%= f.label :show_dividerline %><br />
-    <%= f.check_box :show_dividerline %>
-  </div>
-  <div class="field">
-    <% @newsletter.articles.each do |article| %>
-    <%= article.topic %>
+  <ul>
+    <% @newsletter.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
     <% end %>
-  <div class="actions">
-    <%= f.submit %>
+  </ul>
+</div>
+<% end %>
+
+
+<fieldset id="general-settings">
+
+  <legend>General Settings <i class="icon-chevron-down toggle-general"></i></legend>
+
+  <div class="control-group">
+    <%= f.hidden_field :id =%>
+    <%= f.label :topic %>
+    <div class="controls">
+      <%= f.text_field :topic, class: 'input-block-level' %>
+    </div>
   </div>
+  <div class="control-group">
+    <%= f.label :content %>
+    <div class="controls">
+      <%= f.text_area :content, class: 'newsletter_text' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :template_id %>
+    <div class="controls">
+      <%= f.collection_select(:template_id, @templates, :id, :name) %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :author_id %>
+    <div class="controls">
+      <%= f.collection_select(:author_id, @authors, :id, :name) %>
+    </div>
+  </div>
+  <div class="control-group">     
+    <div class="controls">
+      <%= f.hidden_field :show_outline? %>
+      <%= f.button("Outline", {:class => @newsletter.show_outline ? 'btn active' : 'btn', :'data-toggle' => 'button', :type => 'button', :name => 'newsletter[show_outline]'}) %>
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls">
+      <%= f.hidden_field :show_dividerline? %>
+      <%= f.button("Divider Line", {:class => @newsletter.show_dividerline ? 'btn active' : 'btn', :'data-toggle' => 'button', :type => 'button', :name => 'newsletter[show_dividerline]'}) %>
+    </div>
+  </div>
+
+</fieldset>
+
+
+
+
+<%= render 'articles', f: f %>
+<%= render 'sidearticles', f: f %>
+
+
+
+
+
+
+<div class="actions">
+  <%= f.submit %>
+</div>
 <% end %>
