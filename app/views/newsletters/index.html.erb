@@ -1,35 +1,42 @@
-<h1>Listing newsletters</h1>
+<h1>Newsletters</h1>
 
-<table>
-  <tr>
-    <th>Topic</th>
-    <th>Content</th>
-    <th>Author</th>
-    <th>Template</th>
-    <th>Status</th>
-    <th>Show outline</th>
-    <th>Code</th>
-    <th>Show dividerline</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<table id="newsletter_list" class="newsletter_list table table-striped table-hover">
+    <thead>
+      <tr>
+        <th class="number">id</th>
+        <th>Status</th>
+        <th>Topic</th>
+        <th>Author</th>
+        <th>Updated</th>
+        <th class="actions"></th>
+      </tr>
+    </thead>
 
-<% @newsletters.each do |newsletter| %>
-  <tr>
-    <td><%= newsletter.topic %></td>
-    <td><%= newsletter.content %></td>
-    <td><%= newsletter.author_id %></td>
-    <td><%= newsletter.template_id %></td>
-    <td><%= newsletter.status_id %></td>
-    <td><%= newsletter.show_outline %></td>
-    <td><%= newsletter.code %></td>
-    <td><%= newsletter.show_dividerline %></td>
-    <td><%= link_to 'Show', newsletter %></td>
-    <td><%= link_to 'Edit', edit_newsletter_path(newsletter) %></td>
-    <td><%= link_to 'Destroy', newsletter, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+    <tbody>
+        <% @newsletters.each do |newsletter| %>
+          <tr>
+            <td><%= newsletter.id %></td>
+            <td><%= newsletter.status_id %></td>
+            <td><%= newsletter.topic %></td>
+            <td><%= newsletter.author.try :name %></td>
+            <td></td>
+            <td>
+                <div class="btn-group">
+                    
+                    <%= link_to edit_newsletter_path(newsletter) do %>
+                        <button  class="btn btn-mini edit" title="Edit"><i class="icon-pencil"></i></button>
+                    <% end %>
+                    <%= link_to newsletter do %>
+                        <button  class="btn btn-mini preview" title="Preview"><i class="icon-eye-open"></i></button>
+                    <% end %>
+                    <%= link_to newsletter, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                        <button class="btn btn-mini danger delete" data-toggle="modal" title="Delete"><i class="icon-trash"></i></button>
+                    <% end %>
+                </div>
+            </td>
+          </tr>
+        <% end %>
+    </tbody>
 </table>
 
 <br />
