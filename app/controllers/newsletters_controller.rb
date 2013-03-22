@@ -25,6 +25,8 @@ class NewslettersController < ApplicationController
   # GET /newsletters/new.json
   def new
     @newsletter = Newsletter.new
+    @templates = Template.all
+    @authors = Author.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,12 +37,16 @@ class NewslettersController < ApplicationController
   # GET /newsletters/1/edit
   def edit
     @newsletter = Newsletter.find(params[:id])
+    @templates = Template.all
+    @authors = Author.all
   end
 
   # POST /newsletters
   # POST /newsletters.json
   def create
     @newsletter = Newsletter.new(params[:newsletter])
+    @templates = Template.all
+    @authors = Author.all
 
     respond_to do |format|
       if @newsletter.save
