@@ -17,7 +17,7 @@
   <legend>General Settings <i class="icon-chevron-down toggle-general"></i></legend>
 
   <div class="control-group">
-    <%= f.hidden_field :id =%>
+    <%= f.hidden_field :id %>
     <%= f.label :topic %>
     <div class="controls">
       <%= f.text_field :topic, class: 'input-block-level' %>
@@ -65,10 +65,11 @@
 
 
 
-
-
-
+<%= f.hidden_field :code %>
 <div class="actions">
-  <%= f.submit %>
+  <a href="#" class="submit btn btn-success">Save</a>
+  <%= f.submit "Save and Exit", {:class => 'submit btn btn-success'} %>
+
 </div>
+
 <% end %>
