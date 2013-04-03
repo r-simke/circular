@@ -11,6 +11,46 @@ width: 40% !important;
 min-width: 585px;
 }
 
+legend {
+	border-bottom: 0px;
+}
+
+.alert-success {
+	position: fixed;
+	bottom: 10px;
+	right: 30px;
+}
+
+.preiframe {
+	border: 0px;
+	width: 773px;
+	position: fixed;
+	top: 100px;
+	float: right;
+	height: 70%;
+	@media (min-width: 1361px){
+		height: 80%;
+	}
+	#pre {
+	height: 100%;
+	border: 0px;
+	}
+	.pre-scrollable {
+	max-height: none;
+	font-size: 12px;
+	}
+	#precontainer {
+		display: none;
+		height: 80%;
+	}
+}
+
+#iframe {
+height: 100%;
+width: 773px;
+border: 0px;
+}
+
 .span6.newsletter {
 min-width: 800px;
 float: right;
@@ -19,15 +59,20 @@ float: right;
 .form-horizontal {
 	label {
 		float: left;
-		text-align: right;
-		width: 160px;
 	}
 
+	fieldset {
+		margin-bottom: 20px;
+	}
+
+	.controls {
+		margin-left: 90px;
+	}
 	.control-group {
 		margin-bottom: 10px;
 	}
 
-	label, input, button, select, textarea {
+	label, input, button, select, textarea, .btn {
 		font-size: 12px;
 		border-radius: 0px;
 		-webkit-border-radius: 0px;
@@ -35,9 +80,37 @@ float: right;
 		-webkit-box-shadow: none;
 	}
 
+	.well {
+		background-color: rgba(184, 184, 184, 0.3)
+	}
+
 	.well .toggle, .toggle-general {
 		cursor: pointer;
 		float: left;
 		margin: 10px 10px 10px 0;
 	}
+
+}
+
+.nav-tabs {
+	border-bottom: 0px;
+	& > li > a {
+		border-radius: 0px;
+		-webkit-border-radius: 0px;
+		&:hover {
+			border-color: #eee;
+		}
+	}
+		& > .active > a, & > .active > a:hover {
+			background-color: transparent;
+			border-bottom-color: #ddd !important;
+		}
+}
+
+pre, #html {
+	background-color: #150517 !important;
+	color: #c3cdbf;
+	font-family: "Oxygen Mono", sans-serif;
+	border-radius: 0px;
+	-webkit-border-radius: 0px;
 }
