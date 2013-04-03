@@ -14,10 +14,13 @@ class NewslettersController < ApplicationController
   # GET /newsletters/1.json
   def show
     @newsletter = Newsletter.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @newsletter }
+    if params[:download]
+        send_data(@newsletter.code, :filename => @newsletter.topic+".html", :type => "text/html")
+    else
+      respond_to do |format|
+        format.html # show.html.erb
+        format.json { render json: @newsletter }
+      end
     end
   end
 
@@ -40,6 +43,7 @@ class NewslettersController < ApplicationController
     @templates = Template.all
     @authors = Author.all
   end
+
 
   # POST /newsletters
   # POST /newsletters.json
