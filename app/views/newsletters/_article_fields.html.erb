@@ -1,0 +1,29 @@
+<div class="well article">
+	<%= f.hidden_field :position %>
+	<div class="control-group">
+		<%= f.label :topic, "Headline" %>
+		<div class="controls">
+			<%= f.text_field :topic, class: "input-block-level article_headline" %>
+		</div>
+	</div>
+	<div class="control-group">
+		<%= f.label :content, "Text" %>
+		<div class="controls">
+			<%= f.text_area :content, class: "input-block-level article_text" %>
+		</div>
+	</div>
+	<div class="control-group">
+		<div class="controls">
+			<%= f.hidden_field :show_dividerline? %>
+			<%= f.button("Show Divider Line", {:class => f.object.show_dividerline ? 'btn active' : 'btn', :'data-toggle' => 'button', :type => 'button'}) %>
+		</div>
+	</div>
+	<div class="control-group">
+		<div class="controls">
+			<%= f.hidden_field :_destroy %>
+			<%= link_to raw("<i class='icon-trash'></i>"), '#', class: "remove_fields btn btn-mini btn-danger" %>
+			<%= link_to raw("<i class='icon-arrow-up'></i>"), '#', class: "move_up btn btn-mini" %>
+			<%= link_to raw("<i class='icon-arrow-down'></i>"), '#', class: "move_down btn btn-mini" %>
+		</div>
+	</div>
+</div>

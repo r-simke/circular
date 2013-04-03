@@ -1,29 +1,7 @@
 <fieldset id="articles">
   <legend>Articles</legend>
   <%= f.fields_for :articles do |article_form| %>
-    <div class="well article">
-      <i class="icon-chevron-down toggle"></i>
-      <h5>
-        Article <%= article_form.object.id %>
-      </h5>
-      <div class="control-group">
-        <%= article_form.label :topic, "Headline" %>
-        <div class="controls">
-          <%= article_form.text_field :topic, class: "input-block-level article_headline" %>
-        </div>
-      </div>
-      <div class="control-group">
-        <%= article_form.label :content, "Text" %>
-        <div class="controls">
-          <%= article_form.text_area :content, class: "input-block-level article_text" %>
-        </div>
-      </div>
-      <div class="control-group">
-        <div class="controls">
-          <%= article_form.hidden_field :show_dividerline? %>
-          <%= article_form.button("Show Divider Line", {:class => article_form.object.show_dividerline ? 'btn active' : 'btn', :'data-toggle' => 'button', :type => 'button'}) %>
-        </div>
-      </div>
-    </div>
+    <%= render 'article_fields',  :f => article_form  %>
   <% end %>
+  <%= link_to_add_fields raw("<i class='icon-plus-sign'></i> Add Article"), f, :articles %>
 </fieldset>
