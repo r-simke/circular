@@ -2,7 +2,7 @@ class SidearticlesController < ApplicationController
   # GET /sidearticles
   # GET /sidearticles.json
   def index
-    @sidearticles = Sidearticle.all
+    @sidearticles = Sidearticle.order("position")
 
     respond_to do |format|
       format.html # index.html.erb

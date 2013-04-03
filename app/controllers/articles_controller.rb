@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all
+    @articles = Article.order("position")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -80,4 +80,5 @@ class ArticlesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 end
