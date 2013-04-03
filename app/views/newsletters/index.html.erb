@@ -4,7 +4,6 @@
     <thead>
       <tr>
         <th class="number">id</th>
-        <th>Status</th>
         <th>Topic</th>
         <th>Author</th>
         <th>Updated</th>
@@ -16,10 +15,9 @@
         <% @newsletters.each do |newsletter| %>
           <tr>
             <td><%= newsletter.id %></td>
-            <td><%= newsletter.status_id %></td>
             <td><%= newsletter.topic %></td>
             <td><%= newsletter.author.try :name %></td>
-            <td></td>
+            <td><%= newsletter.updated_at %></td>
             <td>
                 <div class="btn-group">
                     
@@ -27,7 +25,10 @@
                         <button  class="btn btn-mini edit" title="Edit"><i class="icon-pencil"></i></button>
                     <% end %>
                     <%= link_to newsletter do %>
-                        <button  class="btn btn-mini preview" title="Preview"><i class="icon-eye-open"></i></button>
+                        <button  class="btn btn-mini properties" title="Properties"><i class="icon-list"></i></button>
+                    <% end %>
+                    <%= link_to newsletter_path(newsletter, :download => true) do %>
+                        <button  class="btn btn-mini download" title="Download"><i class="icon-download"></i></button>
                     <% end %>
                     <%= link_to newsletter, method: :delete, data: { confirm: 'Are you sure?' } do %>
                         <button class="btn btn-mini danger delete" data-toggle="modal" title="Delete"><i class="icon-trash"></i></button>
@@ -41,4 +42,4 @@
 
 <br />
 
-<%= link_to 'New Newsletter', new_newsletter_path %>
+<%= link_to raw("<button class='btn'><i class='icon-plus-sign'></i> Create Newsletter</button>"), new_newsletter_path %>
