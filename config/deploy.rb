@@ -1,3 +1,5 @@
+require 'bundler/capistrano'
+
 set :application, "circular"
 set :repository,  "git@gitlab.adyton.net:rico.simke/circular.git"
 
