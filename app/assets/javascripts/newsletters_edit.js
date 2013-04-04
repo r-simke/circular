@@ -363,17 +363,23 @@ $(function() {
 	// });
 
 	$('body').on('click', 'a.submit', function(evt){
+		// find out if this a NEW or an EDIT action ..
+		var url = document.URL.split("/");
+		// ... and adjust the ajax method
+		var type = (url[url.length-1] == "new") ? "POST" : "PUT";
+
 		evt.preventDefault();
 		var valuesToSubmit = $('form').serialize();
 		$.ajax({
 			url: $('form').attr('action'),
 			data: valuesToSubmit,
-			type: "PUT",
+			type: type,
 			dataType: "JSON"
 			}).success(function(json){
-					$('<div class="alert alert-success">Newsletter stored</div>"').hide().appendTo('body').fadeIn("fast").delay(1000).fadeOut("slow", function() {
-						$(this).remove();
-					});
+				console.log(json);
+				$('<div class="alert alert-success">Newsletter stored</div>"').hide().appendTo('body').fadeIn("fast").delay(1000).fadeOut("slow", function() {
+					$(this).remove();
+				});
 			});
 	});
 
