@@ -1,5 +1,7 @@
 require 'bundler/capistrano'
 
+default_run_options[:pty] = true
+
 set :application, "circular"
 set :repository,  "git@gitlab.adyton.net:rico.simke/circular.git"
 
