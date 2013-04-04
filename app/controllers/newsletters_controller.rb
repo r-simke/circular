@@ -54,7 +54,8 @@ class NewslettersController < ApplicationController
 
     respond_to do |format|
       if @newsletter.save
-        format.html { redirect_to @newsletter, notice: 'Newsletter was successfully created.' }
+        format.html { redirect_to action: "index" }
+        # format.html { redirect_to @newsletter, notice: 'Newsletter was successfully created.' }
         format.json { render json: @newsletter, status: :created, location: @newsletter }
       else
         format.html { render action: "new" }
@@ -70,7 +71,8 @@ class NewslettersController < ApplicationController
 
     respond_to do |format|
       if @newsletter.update_attributes(params[:newsletter])
-        format.html { redirect_to @newsletter, notice: 'Newsletter was successfully updated.' }
+        format.html { redirect_to action: "index" }
+        # format.html { redirect_to @newsletter, notice: 'Newsletter was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
