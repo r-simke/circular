@@ -67,7 +67,7 @@
 
 <%= f.hidden_field :code %>
 <div class="actions">
-  <a href="#" class="submit btn btn-success">Save</a>
+  <%= link_to("Save", {}, {:href => "#", :class => "submit btn btn-success"}) %>
   <%= f.submit "Save and Exit", {:class => 'submit btn btn-success'} %>
 
 </div>
