@@ -37,9 +37,9 @@
             = link_to "ADYTON Circular", newsletters_path, class: "brand"
           .container-fluid.nav-collapse
             %ul.nav
-              %li= link_to "Newsletters", newsletters_path
-              %li= link_to "Authors", authors_path
-              -#%li= link_to "Templates", templates_path
+              %li= link_to raw("<i class='icon-list'></i> Newsletters"), newsletters_path
+              %li= link_to raw("<i class='icon-user'></i> Authors"), authors_path
+              -#%li= link_to raw("<i class='icon-align-left'></i> Templates"), templates_path
           / /.nav-collapse
     .container-fluid
       .row-fluid
