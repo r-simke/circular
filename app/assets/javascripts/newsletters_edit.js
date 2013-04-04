@@ -36,7 +36,7 @@ function updateAuthor(callback) {
 			var iframe = $('#iframe').contents();
 			iframe.find("#auth_img").attr("src", data.image_url);
 			iframe.find("#auth_name").text(data.name);
-			iframe.find("#auth_tel").text(data.tel);
+			iframe.find("#auth_tel").text(data.phone+"");
 			iframe.find("#auth_title").text(data.title);
 			iframe.find(".auth_email").attr("href", "mailto:" + data.email);
 			iframe.find(".auth_email_text").text(data.email);
