@@ -17,7 +17,9 @@
             <td><%= newsletter.id %></td>
             <td><%= newsletter.topic %></td>
             <td><%= newsletter.author.try :name %></td>
-            <td><%= newsletter.updated_at.strftime('%d.%m.%Y %H:%M:%S') %></td>
+            <td><%= time_ago_in_words(newsletter.updated_at) %>
+                ago
+                <%= newsletter.updated_at.strftime('(%Y-%m-%d %H:%M:%S)') %></td>
             <td>
                 <div class="btn-group">
                     
