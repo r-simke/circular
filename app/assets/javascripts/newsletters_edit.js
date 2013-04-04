@@ -1,3 +1,11 @@
+// find out if this a NEW or an EDIT action ..
+var url = document.URL.split("/");
+// ... and adjust the ajax method (for the SAVE button)
+var ajax_type = (url[url.length-1] == "new") ? "POST" : "PUT";
+// this is to store the newsletter id for an ajax-call in NEW-action
+var newsletter_id = "";
+
+
 // initializes tinyMCEs for all (selector) text fields
 function initTinyMCE() {
 	tinyMCE.init({
@@ -26,7 +34,6 @@ function updateAuthor(callback) {
 	// AJAX gets author data from DB, writes it to div
 	$.get('/authors/' + id + '.json', function(data) {
 			var iframe = $('#iframe').contents();
-			console.log(data);
 			iframe.find("#auth_img").attr("src", data.image_url);
 			iframe.find("#auth_name").text(data.name);
 			iframe.find("#auth_tel").text(data.tel);
@@ -101,7 +108,6 @@ function updateArticles(callback) {
 	}
 
 function updateIframe(callback) {
-	console.log("updateIframe");
 	// setting local names for values
 	var form_newsletter_headline = $('#newsletter_topic').val();
 	var form_newsletter_text = $('#newsletter_content').val();
@@ -248,7 +254,6 @@ $(function() {
 
 	// destroy articles
 	$('form').on('click', '.remove_fields', function(event) {
-		console.log($(this).closest('.well'));
 		$(this).prev('input[name*="_destroy"]').val('true');
 		$(this).closest('.well').hide();
 		updatePositions();
@@ -349,34 +354,20 @@ $(function() {
 		$('#precontainer').hide();
 	});
 
-	// $('form').submit(function() {  
-	//     var valuesToSubmit = $(this).serialize();
-	//     $.ajax({
-	//         url: $(this).attr('action'), //sumbits it to the given url of the form
-	//         data: valuesToSubmit,
-	//         type: "PUT",
-	//         dataType: "JSON" // you want a difference between normal and ajax-calls, and json is standard
-	//     }).success(function(json){
-	//         console.log("success");
-	//     });
-	//     return false; // prevents normal behaviour
-	// });
-
 	$('body').on('click', 'a.submit', function(evt){
-		// find out if this a NEW or an EDIT action ..
-		var url = document.URL.split("/");
-		// ... and adjust the ajax method
-		var type = (url[url.length-1] == "new") ? "POST" : "PUT";
-
 		evt.preventDefault();
 		var valuesToSubmit = $('form').serialize();
 		$.ajax({
-			url: $('form').attr('action'),
+			url: $('form').attr('action') + "/" + newsletter_id + "/",
 			data: valuesToSubmit,
-			type: type,
+			type: ajax_type,
 			dataType: "JSON"
 			}).success(function(json){
-				console.log(json);
+				if(json){					
+					$("input#newsletter_id").val(json.id);
+					newsletter_id = json.id;
+					ajax_type = "PUT";
+				}
 				$('<div class="alert alert-success">Newsletter stored</div>"').hide().appendTo('body').fadeIn("fast").delay(1000).fadeOut("slow", function() {
 					$(this).remove();
 				});
