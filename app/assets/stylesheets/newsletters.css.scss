@@ -3,12 +3,16 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 $adyton-color: #0a9baa;
+$selection-color: $adyton-color;
 $main-font-family: "Open Sans";
 $background-image: url('pattern-light.jpg');
 $well-background-color: rgba(184, 184, 184, 0.3);
 
-* {
-	font-family: $main-font-family;
+*::selection {
+	background-color: $selection-color;
+}
+*::-moz-selection {
+	background-color: $selection-color;
 }
 
 body {
@@ -16,14 +20,20 @@ body {
 	background: { 
 		image: $background-image;
 	}
+	font-family: $main-font-family;
+}
 
-	.container-fluid {
-		min-height: 100%; /* for footer */
-	}
+h1, h2, h3, h4, h5, h6, p, ol, ul, li, th, td, button, a, .brand, input, select, textarea {
+	font-family: $main-font-family;
+}
+
+
+.container-fluid {
+	min-height: 100%; /* for footer */
 }
 
 footer {
-  position: relative;
+	position: relative;
   margin-top: -3em; /* negative value of footer height */
   height: 3em;
   clear:both;
@@ -39,7 +49,7 @@ label, input[type="text"], button, select, textarea, .btn {
 }
 
 select:focus {
-   outline-color: $adyton-color;
+	outline-color: $adyton-color;
 }
 
 input[type="text"]:focus {
@@ -52,8 +62,8 @@ input[type="text"]:focus {
 }
 
 .span6.form {
-width: 40% !important;
-min-width: 585px;
+	width: 40% !important;
+	min-width: 585px;
 }
 
 legend {
@@ -77,12 +87,12 @@ legend {
 		height: 80%;
 	}
 	#pre {
-	height: 100%;
-	border: 0px;
+		height: 100%;
+		border: 0px;
 	}
 	.pre-scrollable {
-	max-height: none;
-	font-size: 12px;
+		max-height: none;
+		font-size: 12px;
 	}
 	#precontainer {
 		display: none;
@@ -91,14 +101,14 @@ legend {
 }
 
 #iframe {
-height: 100%;
-width: 773px;
-border: 0px;
+	height: 100%;
+	width: 773px;
+	border: 0px;
 }
 
 .span6.newsletter {
-min-width: 800px;
-float: right;
+	min-width: 800px;
+	float: right;
 }
 
 .form-horizontal {
@@ -135,15 +145,15 @@ float: right;
 	}
 
 	.navbar-inner {
-	background-color: #dfdfdf;
-	background-image: none;
-	box-shadow: none;
-	-webkit-box-shadow:!important;
-	border-bottom-width: 0px;
+		background-color: #dfdfdf;
+		background-image: none;
+		box-shadow: none;
+		-webkit-box-shadow:!important;
+		border-bottom-width: 0px;
 	}
 
 	.nav {
-	text-transform: uppercase;
+		text-transform: uppercase;
 	}
 
 }
@@ -156,10 +166,10 @@ float: right;
 			border-color: #eee;
 		}
 	}
-		& > .active > a, & > .active > a:hover {
-			background-color: transparent;
-			border-bottom-color: #ddd !important;
-		}
+	& > .active > a, & > .active > a:hover {
+		background-color: transparent;
+		border-bottom-color: #ddd !important;
+	}
 }
 
 pre, #html {
