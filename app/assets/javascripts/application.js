@@ -15,3 +15,4 @@
 //= require twitter/bootstrap
 //= require tinymce-jquery
 //= require encoder.js
+//= require newsletters
