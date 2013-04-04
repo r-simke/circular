@@ -48,3 +48,6 @@ gem 'haml-rails'
 gem 'nested_form'
 
 gem 'tinymce-rails'
+
+# Deploy with Capistrano
+gem 'capistrano'
