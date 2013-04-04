@@ -2,8 +2,53 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$adyton-color: #0a9baa;
+$main-font-family: "Open Sans";
+$background-image: url('pattern-light.jpg');
+$well-background-color: rgba(184, 184, 184, 0.3);
+
 * {
-	font-family: "Open Sans";
+	font-family: $main-font-family;
+}
+
+body {
+	height: 100%; /* for footer */
+	background: { 
+		image: $background-image;
+	}
+
+	.container-fluid {
+		min-height: 100%; /* for footer */
+	}
+}
+
+footer {
+  position: relative;
+  margin-top: -3em; /* negative value of footer height */
+  height: 3em;
+  clear:both;
+  padding-top:20px;
+} 
+
+label, input, button, select, textarea, .btn {
+	font-size: 12px;
+	border-radius: 0px;
+	-webkit-border-radius: 0px;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+}
+
+select:focus {
+   outline-color: $adyton-color;
+}
+
+input[type="text"]:focus {
+	border-color: $adyton-color;
+}
+
+.span12 {
+	overflow:auto;
+	padding-bottom:3em; /* for footer */
 }
 
 .span6.form {
@@ -72,16 +117,8 @@ float: right;
 		margin-bottom: 10px;
 	}
 
-	label, input, button, select, textarea, .btn {
-		font-size: 12px;
-		border-radius: 0px;
-		-webkit-border-radius: 0px;
-		box-shadow: none;
-		-webkit-box-shadow: none;
-	}
-
 	.well {
-		background-color: rgba(184, 184, 184, 0.3)
+		background-color: $well-background-color;
 	}
 
 	.well .toggle, .toggle-general {
@@ -92,6 +129,24 @@ float: right;
 
 }
 
+.navbar{
+	.brand {
+		color: $adyton-color;
+	}
+
+	.navbar-inner {
+	background-color: #dfdfdf;
+	background-image: none;
+	box-shadow: none;
+	-webkit-box-shadow:!important;
+	border-bottom-width: 0px;
+	}
+
+	.nav {
+	text-transform: uppercase;
+	}
+
+}
 .nav-tabs {
 	border-bottom: 0px;
 	& > li > a {
