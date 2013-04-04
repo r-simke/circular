@@ -30,7 +30,7 @@ footer {
   padding-top:20px;
 } 
 
-label, input, button, select, textarea, .btn {
+label, input[type="text"], button, select, textarea, .btn {
 	font-size: 12px;
 	border-radius: 0px;
 	-webkit-border-radius: 0px;
