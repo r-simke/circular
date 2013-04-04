@@ -1,7 +1,9 @@
 set :application, "circular"
 set :repository,  "git@gitlab.adyton.net:rico.simke/circular.git"
 
-# set :scm, :git # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names
+ssh_options[:forward_agent] = true
+
+set :scm, :git # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 
 role :web, "10.3.100.204"                          # Your HTTP server, Apache/etc
@@ -13,6 +15,9 @@ set :user_sudo, false
 
 # set :bundle_gemfile,  "src/Gemfile"
 set :deploy_to, "/usr/local/www/#{application}"
+
+# http://stackoverflow.com/questions/9468912/missing-folder-errors-during-capistrano-deploy
+set :normalize_asset_timestamps, false
 
 set :keep_releases, 3
 
