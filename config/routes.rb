@@ -16,6 +16,10 @@ Circular::Application.routes.draw do
 
   root :to => 'newsletters#index'
 
+<<<<<<< HEAD
+=======
+  get 'newsletters/new' => 'newsletters#new'
+>>>>>>> f2b26d15c238251c0249dbca7b5c8bc8397a06e2
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
