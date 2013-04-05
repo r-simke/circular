@@ -28,8 +28,9 @@ h1, h2, h3, h4, h5, h6, p, ol, ul, li, th, td, button, a, .brand, input, select,
 }
 
 
-.container-fluid {
+.container-fluid.content {
 	min-height: 100%; /* for footer */
+	padding-top: 40px;
 }
 
 footer {
@@ -80,12 +81,12 @@ legend {
 	border: 0px;
 	width: 773px;
 	position: fixed;
-	top: 100px;
+	top: 60px;
 	float: right;
-	height: 70%;
-	@media (min-width: 1361px){
-		height: 80%;
-	}
+	height: 80%;
+	// @media (min-width: 1361px){
+	// 	height: 80%;
+	// }
 	#pre {
 		height: 100%;
 		border: 0px;

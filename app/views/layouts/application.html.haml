@@ -27,7 +27,7 @@
     / Size should be 32 x 32 pixels
     / = favicon_link_tag 'images/favicon.ico', :rel => 'shortcut icon'
   %body
-    .navbar.navbar-fluid-top
+    .navbar.navbar-fixed-top
       .navbar-inner
         .container-fluid
           %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
@@ -41,7 +41,7 @@
               %li= link_to raw("<i class='icon-user'></i> Authors"), authors_path
               -#%li= link_to raw("<i class='icon-align-left'></i> Templates"), templates_path
           / /.nav-collapse
-    .container-fluid
+    .container-fluid.content
       .row-fluid
         .span12
           = bootstrap_flash
@@ -50,6 +50,7 @@
       %footer
         %p
           %i
+            0.13.0405
             %a{"href" => "http://www.adytonsystems.com"} &copy; Adyton Systems 2013
     / /container
     /
