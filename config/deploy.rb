@@ -34,7 +34,7 @@ after "deploy:seed", "deploy:cleanup"
 # these http://github.com/rails/irs_process_scripts
 
 # If you are using Passenger mod_rails uncomment this:
-	namespace :deploy do
+namespace :deploy do
   task :start do ; end
   task :stop do ; end
   task :restart, :roles => :app, :except => { :no_release => true } do
@@ -52,7 +52,7 @@ after "deploy:seed", "deploy:cleanup"
    end
 
 
-	endtask :assets_precompile do
+	task :assets_precompile do
     run "cd #{current_path}; bundle exec rake assets:precompile"
 	end
 
