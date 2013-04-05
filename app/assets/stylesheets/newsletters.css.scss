@@ -7,6 +7,7 @@ $selection-color: $adyton-color;
 $main-font-family: "Open Sans";
 $background-image: url('pattern-light.jpg');
 $well-background-color: rgba(184, 184, 184, 0.3);
+$medium-width: 1424px;
 
 *::selection {
 	background-color: $selection-color;
@@ -181,3 +182,20 @@ pre, #html {
 	border-radius: 0px;
 	-webkit-border-radius: 0px;
 }
+
+
+//responsive
+// @media (max-width: $medium-width){
+// 	.span6.form {
+// 		background-color: black;
+// 	}
+// 	#iframe{
+// 		zoom: 0.75;
+//     -moz-transform: scale(0.75);
+//     -moz-transform-origin: 0 0;
+//     -o-transform: scale(0.75);
+//     -o-transform-origin: 0 0;
+//     -webkit-transform: scale(0.75);
+//     -webkit-transform-origin: 0 0;
+//   }
+// }
