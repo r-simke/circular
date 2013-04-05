@@ -174,9 +174,10 @@ legend {
 }
 
 pre, #html {
-	background-color: #150517 !important;
+	background-color: #2C001E !important;//#150517 !important;
 	color: #c3cdbf;
-	font-family: "Oxygen Mono", sans-serif;
+	font-family: 'Oxygen Mono', monospace;
+	font-weight: bold;
 	border-radius: 0px;
 	-webkit-border-radius: 0px;
 }
