@@ -357,8 +357,9 @@ $(function() {
 	$('body').on('click', 'a.submit', function(evt){
 		evt.preventDefault();
 		var valuesToSubmit = $('form').serialize();
+		ajax_url = (newsletter_id == "") ? $('form').attr('action') : $('form').attr('action') + "/" + newsletter_id + "/";
 		$.ajax({
-			url: $('form').attr('action') + "/" + newsletter_id + "/",
+			url: ajax_url,
 			data: valuesToSubmit,
 			type: ajax_type,
 			dataType: "JSON"
