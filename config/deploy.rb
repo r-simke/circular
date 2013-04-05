@@ -54,6 +54,7 @@ after "deploy:seed", "deploy:cleanup"
 
 	endtask :assets_precompile do
     run "cd #{current_path}; bundle exec rake assets:precompile"
+	end
 
 end
 
