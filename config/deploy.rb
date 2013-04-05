@@ -46,3 +46,5 @@ after "deploy:seed", "deploy:cleanup"
    	run "cd #{current_path}; bundle exec rake db:seed RAILS_ENV=production"
    end
 end
+
+load 'deploy/assets'
