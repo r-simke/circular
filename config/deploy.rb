@@ -41,10 +41,21 @@ after "deploy:seed", "deploy:cleanup"
     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
   end
 
+  task :migration do
+  	p 'migrate'
+  	run "cd #{current_path}; bundle exec rake db:migrate RAILS_ENV=production"
+	end
+
   task :seed do
    	p 'seed'
    	run "cd #{current_path}; bundle exec rake db:seed RAILS_ENV=production"
    end
+
+
+	endtask :assets_precompile do
+    run "cd #{current_path}; bundle exec rake assets:precompile"
+
 end
 
+# http://goo.gl/r2qZn
 load 'deploy/assets'
