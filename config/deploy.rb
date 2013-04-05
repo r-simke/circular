@@ -18,6 +18,7 @@ set :user_sudo, false
 
 # set :bundle_gemfile,  "src/Gemfile"
 set :deploy_to, "/usr/local/www/#{application}"
+set :deploy_via, :remote_cache
 
 # http://stackoverflow.com/questions/9468912/missing-folder-errors-during-capistrano-deploy
 set :normalize_asset_timestamps, false
