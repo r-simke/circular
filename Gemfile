@@ -51,3 +51,5 @@ gem 'tinymce-rails'
 
 # Deploy with Capistrano
 gem 'capistrano'
+
+gem 'libv8', '~> 3.11.8'
