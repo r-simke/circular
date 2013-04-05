@@ -57,4 +57,4 @@
       \==================================================
     / Placed at the end of the document so the pages load faster
     = javascript_include_tag "application"
-    = javascript_include_tag "newsletters_edit" if controller_name == "newsletters" && action_name == "edit" || action_name == "new"
+    = #javascript_include_tag "newsletters_edit" if controller_name == "newsletters" && action_name == "edit" || controller_name == "newsletters" && action_name == "new"

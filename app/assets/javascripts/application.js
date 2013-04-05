@@ -16,3 +16,4 @@
 //= require tinymce-jquery
 //= require encoder.js
 //= require newsletters
+//= require newsletters_edit
