@@ -28,7 +28,6 @@ set :keep_releases, 3
 
 # if you want to clean up old releases on each deploy uncomment this:
 after "deploy:cold", "deploy:restart"
-after "deploy", "deploy:restart"
 after "deploy:restart", "deploy:seed"
 after "deploy:seed", "deploy:cleanup"
 
