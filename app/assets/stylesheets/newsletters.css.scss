@@ -8,6 +8,7 @@ $main-font-family: "Open Sans";
 $background-image: url('pattern-light.jpg');
 $well-background-color: rgba(184, 184, 184, 0.3);
 $medium-width: 1424px;
+$small-width: 1190px;
 
 *::selection {
 	background-color: $selection-color;
@@ -22,6 +23,7 @@ body {
 		image: $background-image;
 	}
 	font-family: $main-font-family;
+	min-width: 585px;
 }
 
 h1, h2, h3, h4, h5, h6, p, ol, ul, li, th, td, button, a, .brand, input, select, textarea {
@@ -184,18 +186,51 @@ pre, #html {
 }
 
 
-//responsive
-// @media (max-width: $medium-width){
-// 	.span6.form {
-// 		background-color: black;
-// 	}
-// 	#iframe{
-// 		zoom: 0.75;
-//     -moz-transform: scale(0.75);
-//     -moz-transform-origin: 0 0;
-//     -o-transform: scale(0.75);
-//     -o-transform-origin: 0 0;
-//     -webkit-transform: scale(0.75);
-//     -webkit-transform-origin: 0 0;
-//   }
-// }
+
+@media (max-width: $medium-width){
+	.span6.newsletter {
+	min-width: 564px;
+	max-width: 40%;
+	}	
+
+	.preiframe {
+		width: 40%;
+		height: 107%;
+	}
+
+	#iframe{
+		@media (min-width: $small-width + 1){
+    -moz-transform: scale(0.75);
+    -moz-transform-origin: 0 0;
+    -o-transform: scale(0.75);
+    -o-transform-origin: 0 0;
+    -webkit-transform: scale(0.75);
+    -webkit-transform-origin: 0 0;
+  	}
+  }
+}
+
+@media (max-width: $small-width){
+	.span12 {
+		overflow: hidden;
+	}
+
+	.span6.newsletter {
+		width: 100%;
+		max-width: none;
+		float: left;
+	}
+
+	.preiframe {
+		position: inherit;
+		float: left;
+		width: 100%;
+	}
+
+}
+
+@media (max-width: 979px){
+	.navbar-fixed-top {
+		margin-bottom: -40px;
+	}
+}
