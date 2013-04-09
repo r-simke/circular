@@ -3,6 +3,6 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
-	$('tr').dblclick ->
+	$('-newsletter_list tr').dblclick ->
 		id = $(this).find('td').first().text()
 		window.location = "/newsletters/" + id + "/edit"
