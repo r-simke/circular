@@ -56,6 +56,3 @@ gem 'libv8', '~> 3.11.8'
 
 # postgresql
 gem "pg", "~> 0.15.0"
-
-# zclip
-gem 'zclip-rails'
