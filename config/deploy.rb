@@ -27,6 +27,7 @@ set :keep_releases, 3
 
 
 # if you want to clean up old releases on each deploy uncomment this:
+after "deploy:cold", "deploy:restart"
 after "deploy:restart", "deploy:seed"
 after "deploy:seed", "deploy:cleanup"
 
@@ -44,7 +45,9 @@ namespace :deploy do
 
   task :migration do
   	p 'migrate'
-  	run "cd #{current_path}; bundle exec rake db:create RAILS_ENV=production; bundle exec rake db:migrate RAILS_ENV=production"
+  	run "cd #{current_path}; bundle exec rake db:create RAILS_ENV=production"
+    p 'create'
+    run "cd #{current_path}; bundle exec rake db:migrate RAILS_ENV=production"
 	end
 
   task :seed do
