@@ -4,5 +4,5 @@
 
 $ ->
 	$('#newsletter_list tr').dblclick ->
-		id = $(this).find('td').first().text()
-		window.location = "/newsletters/" + id + "/edit"
+		uri = $(this).find('button.edit').parent('a').attr('href')
+		window.location = uri
