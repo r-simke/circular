@@ -8,9 +8,7 @@
       %th Phone
       %th Email
       %th Image
-      %th
-      %th
-      %th
+      %th.actions
   %tbody
     - @authors.each do |author|
       %tr
@@ -20,9 +18,10 @@
         %td= author.email
         %td
           %img{ :src => author.image_url, :style => "width:75px;" }
-        %td= link_to 'Show', author
-        %td= link_to 'Edit', edit_author_path(author)
-        %td= link_to 'Destroy', author, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td
+          =link_to raw('<button  class="btn btn-mini properties" title="Properties"><i class="icon-list"></i></button>'), author
+          =link_to raw('<button  class="btn btn-mini edit" title="Edit"><i class="icon-pencil"></i></button>'), edit_author_path(author)
+          =link_to raw('<button class="btn btn-mini danger delete" data-toggle="modal" title="Delete"><i class="icon-trash"></i></button>'), author, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 

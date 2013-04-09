@@ -3,5 +3,9 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
-  $('body').on('keyup input paste change', 'input#author_image_url', ->
-    $('.author_image').attr('src', $('input#author_image_url').val());)
+	$('body').on('keyup input paste change', 'input#author_image_url', ->
+		$('.author_image').attr('src', $('input#author_image_url').val());)
+
+	$('#author_list tr').dblclick ->
+		uri = $(this).find('button.edit').parent('a').attr('href')
+		window.location = uri
