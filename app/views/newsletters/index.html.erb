@@ -21,21 +21,19 @@
                 ago
                 <%= newsletter.updated_at.strftime('(%Y-%m-%d %H:%M:%S)') %></td>
             <td>
-                <div class="btn-group">
                     
-                    <%= link_to edit_newsletter_path(newsletter) do %>
-                        <button  class="btn btn-mini edit" title="Edit"><i class="icon-pencil"></i></button>
-                    <% end %>
-                    <%= link_to newsletter do %>
-                        <button  class="btn btn-mini properties" title="Properties"><i class="icon-list"></i></button>
-                    <% end %>
-                    <%= link_to newsletter_path(newsletter, :download => true) do %>
-                        <button  class="btn btn-mini download" title="Download"><i class="icon-download"></i></button>
-                    <% end %>
-                    <%= link_to newsletter, method: :delete, data: { confirm: 'Are you sure?' } do %>
-                        <button class="btn btn-mini danger delete" data-toggle="modal" title="Delete"><i class="icon-trash"></i></button>
-                    <% end %>
-                </div>
+                <%= link_to edit_newsletter_path(newsletter) do %>
+                    <button  class="btn btn-mini edit" title="Edit"><i class="icon-pencil"></i></button>
+                <% end %>
+                <%= link_to newsletter do %>
+                    <button  class="btn btn-mini properties" title="Properties"><i class="icon-list"></i></button>
+                <% end %>
+                <%= link_to newsletter_path(newsletter, :download => true) do %>
+                    <button  class="btn btn-mini download" title="Download"><i class="icon-download"></i></button>
+                <% end %>
+                <%= link_to newsletter, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                    <button class="btn btn-mini danger delete" data-toggle="modal" title="Delete"><i class="icon-trash"></i></button>
+                <% end %>
             </td>
           </tr>
         <% end %>
