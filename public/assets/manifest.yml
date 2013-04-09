@@ -1,10 +1,14 @@
 ---
+favicon.ico: favicon-dfe281aaa2f1b1623c2fc856c0609f62.ico
+favicon/index.ico: favicon-dfe281aaa2f1b1623c2fc856c0609f62.ico
+favicon.png: favicon-7f3a8fc457d1df49c2bffcb6a2e319cc.png
+favicon/index.png: favicon-7f3a8fc457d1df49c2bffcb6a2e319cc.png
 pattern-light.jpg: pattern-light-f4266d75a0eb53c36ce4d54e5e111aaf.jpg
 pattern-light/index.jpg: pattern-light-f4266d75a0eb53c36ce4d54e5e111aaf.jpg
 rails.png: rails-a3386665c05a2d82f711a4aaa72d247c.png
 rails/index.png: rails-a3386665c05a2d82f711a4aaa72d247c.png
-application.js: application-2ce2f7d4fd8bf1dc63a96d1531da965a.js
-application/index.js: application-2ce2f7d4fd8bf1dc63a96d1531da965a.js
+application.js: application-497c3243b8ebdcc3c82a89a88c19d2c0.js
+application/index.js: application-497c3243b8ebdcc3c82a89a88c19d2c0.js
 application.css: application-c8bcc2ba162a2fe0f5ba0ad38882a15c.css
 application/index.css: application-c8bcc2ba162a2fe0f5ba0ad38882a15c.css
 tinymce.js: tinymce-7dd3bcb3de37f3e572293141caf7fe88.js
