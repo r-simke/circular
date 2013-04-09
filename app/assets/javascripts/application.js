@@ -16,4 +16,5 @@
 //= require tinymce-jquery
 //= require encoder.js
 //= require newsletters
+//= require authors
 //= require newsletters_edit
