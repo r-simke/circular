@@ -18,3 +18,4 @@
 //= require newsletters
 //= require authors
 //= require newsletters_edit
+//= require zclip
