@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require tinymce-jquery
+//= require zero-clipboard
 //= require encoder.js
 //= require newsletters
 //= require authors
