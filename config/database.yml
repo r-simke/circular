@@ -24,7 +24,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  host: localhost #?needed?
+  host: localhost
   database: circular_production
   pool: 5
   username: db_user
