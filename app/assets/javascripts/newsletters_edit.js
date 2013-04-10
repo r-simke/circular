@@ -5,6 +5,8 @@ var ajax_type = (url[url.length-1] == "new") ? "POST" : "PUT";
 // this is to store the newsletter id for an ajax-call in NEW-action
 var newsletter_id = "";
 
+var _changes_made = false;
+
 
 // initializes tinyMCEs for all (selector) text fields
 function initTinyMCE() {
@@ -33,16 +35,16 @@ function updateAuthor(callback) {
 	var id = $('#newsletter_author_id').find("option:selected").val();
 	// AJAX gets author data from DB, writes it to div
 	$.get('/authors/' + id + '.json', function(data) {
-			var iframe = $('#iframe').contents();
-			iframe.find("#auth_img").attr("src", data.image_url);
-			iframe.find("#auth_name").text(data.name);
-			iframe.find("#auth_tel").text(data.phone+"");
-			iframe.find("#auth_title").text(data.title);
-			iframe.find(".auth_email").attr("href", "mailto:" + data.email);
-			iframe.find(".auth_email_text").text(data.email);
+		var iframe = $('#iframe').contents();
+		iframe.find("#auth_img").attr("src", data.image_url);
+		iframe.find("#auth_name").text(data.name);
+		iframe.find("#auth_tel").text(data.phone+"");
+		iframe.find("#auth_title").text(data.title);
+		iframe.find(".auth_email").attr("href", "mailto:" + data.email);
+		iframe.find(".auth_email_text").text(data.email);
 
-			if(callback != undefined && typeof callback == 'function') callback();
-		});
+		if(callback != undefined && typeof callback == 'function') callback();
+	});
 }
 
 function updatePositions(callback) {
@@ -75,37 +77,37 @@ function disableButtons(callback) {
 }
 
 function updateArticles(callback) {
-		// setting local names for values
-		var form_newsletter_text = $('#newsletter_content').val();
-		var form_article_texts = $('.article_text');
-		var form_sidearticle_texts = $('.sidearticle_text');
-		var iframe = $('#iframe').contents();
+	// setting local names for values
+	var form_newsletter_text = $('#newsletter_content').val();
+	var form_article_texts = $('.article_text');
+	var form_sidearticle_texts = $('.sidearticle_text');
+	var iframe = $('#iframe').contents();
 
-		//update newsletter welcome text
-		iframe.find('#nlWelcomeText').html(form_newsletter_text);
+	//update newsletter welcome text
+	iframe.find('#nlWelcomeText').html(form_newsletter_text);
 
-		//update paragraphs
-		form_article_texts.each(function() {
-			var artid = $(this).parents(".well").find("input[name*=position]").val();
-			iframe.find('#article' + artid).find('.pwrapper').html($(this).val());
-		});
+	//update paragraphs
+	form_article_texts.each(function() {
+		var artid = $(this).parents(".well").find("input[name*=position]").val();
+		iframe.find('#article' + artid).find('.pwrapper').html($(this).val());
+	});
 
-		//update line classes
-		iframe.find('.article').each(function() {
-			$(this).find('p').attr('class', '');
-			var artid = $(this).attr('id').slice(7, $(this).attr('id').length);
-			if( $(".article").find("input[name*=position][value="+artid+"]").parents(".well").find("input[name*='show_dividerline']").val() == "true" ? true : false ) {
-				$(this).children().last().attr('class', 'line');
-			}
-		});
+	//update line classes
+	iframe.find('.article').each(function() {
+		$(this).find('p').attr('class', '');
+		var artid = $(this).attr('id').slice(7, $(this).attr('id').length);
+		if( $(".article").find("input[name*=position][value="+artid+"]").parents(".well").find("input[name*='show_dividerline']").val() == "true" ? true : false ) {
+			$(this).children().last().attr('class', 'line');
+		}
+	});
 
-		//update side articles
-		form_sidearticle_texts.each(function() {
-			var artid = $(this).parents(".well").find("input[name*=position]").val();
-			iframe.find('#sidearticle' + artid).find('.pwrapper').html($(this).val());
-		});
-		if(callback != undefined && typeof callback == 'function') callback();
-	}
+	//update side articles
+	form_sidearticle_texts.each(function() {
+		var artid = $(this).parents(".well").find("input[name*=position]").val();
+		iframe.find('#sidearticle' + artid).find('.pwrapper').html($(this).val());
+	});
+	if(callback != undefined && typeof callback == 'function') callback();
+}
 
 function updateIframe(callback) {
 	// setting local names for values
@@ -228,9 +230,9 @@ function transferHTML(callback) {
 	ed.save(); //save editor content to textarea
 	updateIframe(function(){
 		
-	updateArticles(function(){
-		updatePre();
-	});
+		updateArticles(function(){
+			updatePre();
+		});
 	});
 	if(callback != undefined && typeof callback == 'function') callback();
 }
@@ -253,27 +255,29 @@ $(function() {
 	});
 
 	// destroy articles
-	$('form').on('click', '.remove_fields', function(event) {
+	$('.newsletter-form').on('click', '.remove_fields', function(event) {
 		$(this).prev('input[name*="_destroy"]').val('true');
 		$(this).closest('.well').hide();
 		updatePositions();
 		disableButtons();
+		_changes_made = true;
 		event.preventDefault();
 	});
 
 	// add articles
-	$('form').on('click', '.add_fields', function(event){
+	$('.newsletter-form').on('click', '.add_fields', function(event){
 		time = new Date().getTime();
 		regexp = new RegExp($(this).data('id'), 'g');
 		$(this).before($(this).data('fields').replace(regexp, time));
 		updatePositions();
 		disableButtons();
 		initTinyMCE();
+		_changes_made = true;
 		event.preventDefault();
 	});
 
 	// move up article
-	$('form').on('click', '.move_up:not(.disabled)', function(event){
+	$('.newsletter-form').on('click', '.move_up:not(.disabled)', function(event){
 		var article = $(this).parents('.article, .sidearticle');
 		var before = article.prevAll('.article:first, .sidearticle:first');
 		article.slideUp(500, function() {
@@ -290,11 +294,12 @@ $(function() {
 				disableButtons();
 			});
 		});
+		_changes_made = true;
 		event.preventDefault();
 	});
-		
+
 	// move down article
-	$('form').on('click', '.move_down:not(.disabled)', function(event){
+	$('.newsletter-form').on('click', '.move_down:not(.disabled)', function(event){
 		var article = $(this).parents('.article, .sidearticle');
 		var after = article.nextAll('.article:first, .sidearticle:first');
 		article.slideUp(500, function() {
@@ -311,6 +316,7 @@ $(function() {
 				disableButtons();
 			});
 		});
+		_changes_made = true;
 		event.preventDefault();
 	});
 
@@ -319,6 +325,7 @@ $(function() {
 		updateTemplate(function() {
 			updateAuthor(function() {
 				updatePre();
+				_changes_made = true;
 			});
 		});
 	});
@@ -326,14 +333,16 @@ $(function() {
 	//change author
 	$('#newsletter_author_id').change(function() {
 		updateAuthor(function() {
-				updatePre();
-			});
+			updatePre();
+			_changes_made = true;
+		});
 	});
 
 	//update iframe on key
-	$('body').on('keyup input paste change click', 'textarea, input:not([type=submit]), select, button:not(.submit)', function(evt) {
+	$('.newsletter-form').on('keyup input paste change click', 'textarea, input:not([type=submit]), select, button:not(.submit)', function(evt) {
 		updateIframe(function(){
 			updatePre();
+			_changes_made = true;
 		});
 	});
 
@@ -346,6 +355,7 @@ $(function() {
 		$('#precontainer').show();
 	});
 
+	// change between preview and code
 	$('body').on('click', '#preview', function(evt){
 		evt.preventDefault();
 		$('#code').removeClass('active');
@@ -354,7 +364,13 @@ $(function() {
 		$('#precontainer').hide();
 	});
 
-	$('body').on('click', 'a.submit', function(evt){
+	// SAVE AND EXIT: no warning!
+	$('.newsletter-form').on('click', '.save-and-exit', function(evt){
+		_changes_made = false;
+		});
+
+	// SAVE
+	$('.newsletter-form').on('click', '.save', function(evt){
 		evt.preventDefault();
 		var valuesToSubmit = $('form').serialize();
 		ajax_url = (newsletter_id == "") ? $('form').attr('action') : $('form').attr('action') + "/" + newsletter_id + "/";
@@ -363,16 +379,23 @@ $(function() {
 			data: valuesToSubmit,
 			type: ajax_type,
 			dataType: "JSON"
-			}).success(function(json){
-				if(json){					
-					$("input#newsletter_id").val(json.id);
-					newsletter_id = json.id;
-					ajax_type = "PUT";
-				}
-				$('<div class="alert alert-success">Newsletter stored</div>"').hide().appendTo('body').fadeIn("fast").delay(1000).fadeOut("slow", function() {
-					$(this).remove();
-				});
+		}).success(function(json){
+			_changes_made = false;
+			if(json){					
+				$("input#newsletter_id").val(json.id);
+				newsletter_id = json.id;
+				ajax_type = "PUT";
+			}
+			$('<div class="alert alert-success">Newsletter stored</div>"').hide().appendTo('body').fadeIn("fast").delay(1000).fadeOut("slow", function() {
+				$(this).remove();
 			});
+		});
+	});
+
+	$(window).bind('beforeunload', function() {
+		if (_changes_made){
+			return 'There are unsaved changes which will be lost if you continue.';
+		}
 	});
 
 });

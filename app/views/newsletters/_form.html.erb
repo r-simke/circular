@@ -1,4 +1,4 @@
-<%= form_for(@newsletter, :html => { :class => "form-horizontal"}) do |f| %>
+<%= form_for(@newsletter, :html => { :class => "form-horizontal newsletter-form"}) do |f| %>
 <% if @newsletter.errors.any? %>
 <div id="error_explanation">
   <h2><%= pluralize(@newsletter.errors.count, "error") %> prohibited this newsletter from being saved:</h2>
@@ -67,8 +67,8 @@
 
 <%= f.hidden_field :code %>
 <div class="actions">
-  <%= link_to("Save", {}, {:href => "#", :class => "submit btn btn-success"}) %>
-  <%= f.submit "Save and Exit", {:class => 'submit btn btn-success'} %>
+  <%= link_to("Save", {}, {:href => "#", :class => "submit btn btn-success save"}) %>
+  <%= f.submit "Save and Exit", {:class => 'submit btn btn-success save-and-exit'} %>
 
 </div>
 
